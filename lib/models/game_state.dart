@@ -78,6 +78,7 @@ class GameState extends ChangeNotifier {
     // Flip the card
     tiles[index] = tiles[index].copyWith(isFlipped: true);
     count++;
+    guesses++; // Increment guesses on EVERY card click, matching original behavior
 
     if (count == 1) {
       // First card selected
@@ -88,7 +89,6 @@ class GameState extends ChangeNotifier {
       // Second card selected
       secondGuessName = tiles[index].name;
       secondGuessId = tiles[index].id;
-      guesses++;
       isProcessing = true;
       notifyListeners();
 
